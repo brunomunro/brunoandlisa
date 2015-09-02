@@ -1,0 +1,12 @@
+{
+  "name": "Wedding",
+  "version": "1.0.0",
+  "description": "Our wedding website on Heroku",
+  "dependencies": {
+    "harp": "*"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  }
+}
