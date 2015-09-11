@@ -143,13 +143,16 @@ $(document).ready(function() {
     // Instagram Feed
 
     jQuery.fn.spectragram.accessData = {
-        accessToken: '1406933036.fedaafa.feec3d50f5194ce5b705a1f11a107e0b',
-        clientID: 'fedaafacf224447e8aef74872d3820a1'
+        accessToken: '193539664.1677ed0.1cb2dcc8f0aa4dc28f128bb3e88ea78b',
+        clientID: '17cd64d2b86d4e8cb48a9161017ca81b'
     };
 
     $('.instafeed').each(function() {
-        $(this).children('ul').spectragram('getUserFeed', {
-            query: $(this).attr('data-user-name')
+        // $(this).children('ul').spectragram('getRecentTagged', {
+        //     query: $(this).attr('brunoandlisa')
+        // });
+        $(this).children('ul').spectragram('getRecentTagged', {
+            query: 'brunoandlisawedding'
         });
     });
 
@@ -162,9 +165,9 @@ $(document).ready(function() {
         else e.returnValue = false;
 
         var thisForm = $(this).closest('form.form-email'),
-            error = 0,
-            originalError = thisForm.attr('original-error'),
-            loadingSpinner, iFrame, userEmail, userFullName, userFirstName, userLastName;
+        error = 0,
+        originalError = thisForm.attr('original-error'),
+        loadingSpinner, iFrame, userEmail, userFullName, userFirstName, userLastName;
 
         // Mailchimp/Campaign Monitor Mail List Form Scripts
         iFrame = $(thisForm).find('iframe.mail-list-form');
@@ -249,56 +252,56 @@ $(document).ready(function() {
                         $(thisForm).find('input[type="submit"]').show();
                     }
                 });
-            }
-        }
-        return false;
-    });
+}
+}
+return false;
+});
 
-    $('.validate-required, .validate-email').on('blur change', function() {
-        validateFields($(this).closest('form'));
-    });
+$('.validate-required, .validate-email').on('blur change', function() {
+    validateFields($(this).closest('form'));
+});
 
-    $('form').each(function() {
-        if ($(this).find('.form-error').length) {
-            $(this).attr('original-error', $(this).find('.form-error').text());
-        }
-    });
-
-    function validateFields(form) {
-        var name, error, originalErrorMessage;
-
-        $(form).find('.validate-required[type="checkbox"]').each(function() {
-            if (!$('[name="' + $(this).attr('name') + '"]:checked').length) {
-                error = 1;
-                name = $(this).attr('name').replace('[]', '');
-                form.find('.form-error').text('Please tick at least one ' + name + ' box.');
-            }
-        });
-
-        $(form).find('.validate-required').each(function() {
-            if ($(this).val() === '') {
-                $(this).addClass('field-error');
-                error = 1;
-            } else {
-                $(this).removeClass('field-error');
-            }
-        });
-
-        $(form).find('.validate-email').each(function() {
-            if (!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))) {
-                $(this).addClass('field-error');
-                error = 1;
-            } else {
-                $(this).removeClass('field-error');
-            }
-        });
-
-        if (!form.find('.field-error').length) {
-            form.find('.form-error').fadeOut(1000);
-        }
-
-        return error;
+$('form').each(function() {
+    if ($(this).find('.form-error').length) {
+        $(this).attr('original-error', $(this).find('.form-error').text());
     }
+});
+
+function validateFields(form) {
+    var name, error, originalErrorMessage;
+
+    $(form).find('.validate-required[type="checkbox"]').each(function() {
+        if (!$('[name="' + $(this).attr('name') + '"]:checked').length) {
+            error = 1;
+            name = $(this).attr('name').replace('[]', '');
+            form.find('.form-error').text('Please tick at least one ' + name + ' box.');
+        }
+    });
+
+    $(form).find('.validate-required').each(function() {
+        if ($(this).val() === '') {
+            $(this).addClass('field-error');
+            error = 1;
+        } else {
+            $(this).removeClass('field-error');
+        }
+    });
+
+    $(form).find('.validate-email').each(function() {
+        if (!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))) {
+            $(this).addClass('field-error');
+            error = 1;
+        } else {
+            $(this).removeClass('field-error');
+        }
+    });
+
+    if (!form.find('.field-error').length) {
+        form.find('.form-error').fadeOut(1000);
+    }
+
+    return error;
+}
 
 }); 
 
@@ -329,9 +332,9 @@ $(window).load(function() {
 
 function convertToSlug(text) {
     return text
-        .toLowerCase()
-        .replace(/[^\w ]+/g, '')
-        .replace(/ +/g, '-');
+    .toLowerCase()
+    .replace(/[^\w ]+/g, '')
+    .replace(/ +/g, '-');
 }
 
 function parallaxBackground() {
